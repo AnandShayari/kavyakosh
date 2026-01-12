@@ -1,41 +1,36 @@
-async function askAI() {
-  const input = document.getElementById("aiInput");
-  const output = document.getElementById("aiOutput");
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("aiBtn");
 
-  const message = input.value.trim();
+  btn.addEventListener("click", async () => {
+    const input = document.getElementById("aiInput");
+    const output = document.getElementById("aiOutput");
 
-  if (!message) {
-    output.innerText = "Please enter a prompt.";
-    return;
-  }
-
-  output.innerText = "Generating...";
-
-  try {
-    const res = await fetch(
-      "https://kavyakosh-backend.vercel.app/api/chat",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message })
-      }
-    );
-
-    const text = await res.text();
-
-    if (!res.ok) {
-      throw new Error(text);
+    const message = input.value.trim();
+    if (!message) {
+      output.textContent = "Enter a prompt first.";
+      return;
     }
 
-    const data = JSON.parse(text);
-    output.innerText = data.reply || "No response";
+    output.textContent = "Generating...";
 
-  } catch (err) {
-    console.error(err);
-    output.innerText =
-      "❌ Network error.\n\n" +
-      "Open DevTools → Console → copy error.";
-  }
-}
+    try {
+      const res = await fetch(
+        "https://kavyakosh-backend.vercel.app/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message }),
+        }
+      );
+
+      const data = await res.json();
+      output.textContent = data.reply || "No response";
+
+    } catch (err) {
+      console.error(err);
+      output.textContent = "❌ Network error";
+    }
+  });
+});
