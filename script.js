@@ -1,29 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("publishForm");
+  const publishForm = document.getElementById("publishForm");
   const worksContainer = document.getElementById("worksContainer");
   const filterLanguage = document.getElementById("filterLanguage");
   const filterGenre = document.getElementById("filterGenre");
 
   let works = JSON.parse(localStorage.getItem("kavyakoshWorks")) || [];
 
-  function render() {
+  function renderWorks() {
     worksContainer.innerHTML = "";
-    const l = filterLanguage.value;
-    const g = filterGenre.value;
 
-    works.filter(w =>
-      (l === "All" || w.language === l) &&
-      (g === "All" || w.genre === g)
-    ).forEach(w => {
+    const lang = filterLanguage.value;
+    const genre = filterGenre.value;
+
+    const filtered = works.filter(w =>
+      (lang === "All" || w.language === lang) &&
+      (genre === "All" || w.genre === genre)
+    );
+
+    if (filtered.length === 0) {
+      worksContainer.innerHTML = "<p>No works found.</p>";
+      return;
+    }
+
+    filtered.forEach(w => {
       const div = document.createElement("div");
       div.className = "work-card";
-      div.innerHTML = `<h3>${w.title}</h3><p>${w.author}</p><p>${w.content}</p>`;
+      div.innerHTML = `
+        <h3>${w.title}</h3>
+        <p><strong>${w.author}</strong></p>
+        <p>${w.content}</p>
+      `;
       worksContainer.appendChild(div);
     });
   }
 
-  form.addEventListener("submit", e => {
+  publishForm.addEventListener("submit", e => {
     e.preventDefault();
+
     works.push({
       title: title.value,
       author: author.value,
@@ -31,38 +44,62 @@ document.addEventListener("DOMContentLoaded", () => {
       genre: genre.value,
       content: content.value
     });
+
     localStorage.setItem("kavyakoshWorks", JSON.stringify(works));
-    form.reset();
-    render();
+    publishForm.reset();
+    renderWorks();
   });
 
-  filterLanguage.onchange = render;
-  filterGenre.onchange = render;
-  render();
+  filterLanguage.addEventListener("change", renderWorks);
+  filterGenre.addEventListener("change", renderWorks);
+
+  renderWorks();
 });
 
-async function askAI() {
-  const input = document.getElementById("aiInput").value;
-  const output = document.getElementById("aiOutput");
+/* ===============================
+   AI CHAT (MOST STABLE VERSION)
+================================ */
 
-  if (!input.trim()) {
-    output.innerText = "Please write something.";
+async function askAI() {
+  const inputEl = document.getElementById("aiInput");
+  const outputEl = document.getElementById("aiOutput");
+
+  const prompt = inputEl.value.trim();
+
+  if (!prompt) {
+    outputEl.innerText = "Please write something first.";
     return;
   }
 
-  output.innerText = "Thinking...";
+  outputEl.innerText = "Thinking...";
 
   try {
-    const res = await fetch("https://kavyakosh-backend.vercel.app/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      mode: "cors",
-      body: JSON.stringify({ message: input })
-    });
+    const response = await fetch(
+      "https://kavyakosh-backend.vercel.app/api/chat",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: prompt })
+      }
+    );
 
-    const data = await res.json();
-    output.innerText = data.reply;
-  } catch (e) {
-    output.innerText = "Network error.";
+    if (!response.ok) {
+      throw new Error("Server responded with error");
+    }
+
+    const data = await response.json();
+
+    if (!data.reply) {
+      throw new Error("Invalid response from server");
+    }
+
+    outputEl.innerText = data.reply;
+
+  } catch (error) {
+    console.error("AI Error:", error);
+    outputEl.innerText =
+      "Network error. Please try again after a few seconds.";
   }
 }
