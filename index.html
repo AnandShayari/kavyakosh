@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Kavyakosh | Literature & Book Platform</title>
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- FIXED PATHS FOR GITHUB PAGES -->
+  <link rel="stylesheet" href="/style.css" />
 
-  <!-- Optional Google Font (SAFE) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- HEADER -->
-  <header class="main-header">
-    <h1 class="logo">Kavyakosh</h1>
+  <header>
+    <h1>Kavyakosh</h1>
     <nav>
       <a href="#home">Home</a>
       <a href="#publish">Publish</a>
@@ -27,24 +28,25 @@
     </nav>
   </header>
 
-  <!-- HERO / HOME -->
+  <!-- HERO -->
   <section id="home" class="hero">
-    <div class="hero-content">
+    <div>
       <h2>Share Your Verse with the World</h2>
       <p>
         Kavyakosh is a modern platform for Hindi & English literature,
-        poetry, shayari, stories, and books. Publish your work and reach readers globally.
+        poetry, shayari, stories, and books.
       </p>
       <a href="#publish" class="btn">Start Publishing</a>
     </div>
   </section>
 
-  <!-- PUBLISH SECTION (UNCHANGED IDs) -->
+  <!-- PUBLISH -->
   <section id="publish">
     <h2>Publish Your Work</h2>
+
     <form id="publishForm">
-      <input type="text" placeholder="Title" id="title" required>
-      <input type="text" placeholder="Author Name" id="author" required>
+      <input type="text" id="title" placeholder="Title" required />
+      <input type="text" id="author" placeholder="Author Name" required />
 
       <select id="language">
         <option value="Hindi">Hindi</option>
@@ -103,22 +105,16 @@
   <!-- CONTACT -->
   <section id="contact">
     <h2>Contact Us</h2>
-    <p>
-  Email:
-  <a href="mailto:info@kavyakosh.online">
-    info@kavyakosh.online
-  </a>
-</p>
-
+    <p>Email: <a href="mailto:info@kavyakosh.online">info@kavyakosh.online</a></p>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 Kavyakosh | All Rights Reserved</p>
+    <p>© 2026 Kavyakosh | All Rights Reserved</p>
   </footer>
 
-  <!-- External JS -->
-  <script src="script.js"></script>
+  <!-- FIXED PATH -->
+  <script src="/script.js"></script>
 
 </body>
 </html>
