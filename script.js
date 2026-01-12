@@ -1,43 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  const publishForm = document.getElementById("publishForm");
+  const form = document.getElementById("publishForm");
   const worksContainer = document.getElementById("worksContainer");
   const filterLanguage = document.getElementById("filterLanguage");
   const filterGenre = document.getElementById("filterGenre");
 
   let works = JSON.parse(localStorage.getItem("kavyakoshWorks")) || [];
 
-  function renderWorks() {
+  function render() {
     worksContainer.innerHTML = "";
+    const l = filterLanguage.value;
+    const g = filterGenre.value;
 
-    const lang = filterLanguage.value;
-    const genre = filterGenre.value;
-
-    const filtered = works.filter(w =>
-      (lang === "All" || w.language === lang) &&
-      (genre === "All" || w.genre === genre)
-    );
-
-    if (filtered.length === 0) {
-      worksContainer.innerHTML = "<p>No works found.</p>";
-      return;
-    }
-
-    filtered.forEach(w => {
+    works.filter(w =>
+      (l === "All" || w.language === l) &&
+      (g === "All" || w.genre === g)
+    ).forEach(w => {
       const div = document.createElement("div");
       div.className = "work-card";
-      div.innerHTML = `
-        <h3>${w.title}</h3>
-        <p><strong>${w.author}</strong></p>
-        <p>${w.content}</p>
-      `;
+      div.innerHTML = `<h3>${w.title}</h3><p>${w.author}</p><p>${w.content}</p>`;
       worksContainer.appendChild(div);
     });
   }
 
-  publishForm.addEventListener("submit", e => {
+  form.addEventListener("submit", e => {
     e.preventDefault();
-
     works.push({
       title: title.value,
       author: author.value,
@@ -45,16 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
       genre: genre.value,
       content: content.value
     });
-
     localStorage.setItem("kavyakoshWorks", JSON.stringify(works));
-    publishForm.reset();
-    renderWorks();
+    form.reset();
+    render();
   });
 
-  filterLanguage.addEventListener("change", renderWorks);
-  filterGenre.addEventListener("change", renderWorks);
-
-  renderWorks();
+  filterLanguage.onchange = render;
+  filterGenre.onchange = render;
+  render();
 });
 
 async function askAI() {
@@ -72,12 +56,13 @@ async function askAI() {
     const res = await fetch("https://kavyakosh-backend.vercel.app/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      mode: "cors",
       body: JSON.stringify({ message: input })
     });
 
     const data = await res.json();
-    output.innerText = data.reply || "No response";
-  } catch {
+    output.innerText = data.reply;
+  } catch (e) {
     output.innerText = "Network error.";
   }
 }
