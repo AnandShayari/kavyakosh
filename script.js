@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ===============================
+  // PUBLISH & LIBRARY LOGIC
+  // ===============================
+
   const publishForm = document.getElementById("publishForm");
   const worksContainer = document.getElementById("worksContainer");
   const filterLanguage = document.getElementById("filterLanguage");
@@ -37,26 +41,79 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  publishForm.addEventListener("submit", e => {
-    e.preventDefault();
+  if (publishForm) {
+    publishForm.addEventListener("submit", e => {
+      e.preventDefault();
 
-    const newWork = {
-      title: document.getElementById("title").value.trim(),
-      author: document.getElementById("author").value.trim(),
-      language: document.getElementById("language").value,
-      genre: document.getElementById("genre").value,
-      content: document.getElementById("content").value.trim()
-    };
+      const newWork = {
+        title: document.getElementById("title").value.trim(),
+        author: document.getElementById("author").value.trim(),
+        language: document.getElementById("language").value,
+        genre: document.getElementById("genre").value,
+        content: document.getElementById("content").value.trim()
+      };
 
-    works.push(newWork);
-    localStorage.setItem("kavyakoshWorks", JSON.stringify(works));
+      works.push(newWork);
+      localStorage.setItem("kavyakoshWorks", JSON.stringify(works));
 
-    publishForm.reset();
-    renderWorks();
-  });
+      publishForm.reset();
+      renderWorks();
+    });
+  }
 
-  filterLanguage.addEventListener("change", renderWorks);
-  filterGenre.addEventListener("change", renderWorks);
+  if (filterLanguage) filterLanguage.addEventListener("change", renderWorks);
+  if (filterGenre) filterGenre.addEventListener("change", renderWorks);
 
   renderWorks();
+
+  // ===============================
+  // AI CHAT LOGIC (BLENDED)
+  // ===============================
+
+  const aiBtn = document.getElementById("aiBtn");
+  const aiInput = document.getElementById("aiInput");
+  const aiOutput = document.getElementById("aiOutput");
+
+  if (aiBtn) {
+    aiBtn.addEventListener("click", async () => {
+      const message = aiInput.value.trim();
+
+      if (!message) {
+        aiOutput.innerText = "Please write something first.";
+        return;
+      }
+
+      aiOutput.innerText = "Kavyakosh AI is thinking... ✨";
+
+      try {
+        const response = await fetch(
+          "https://kavyakosh-backend.vercel.app/api/chat",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Server error");
+        }
+
+        const data = await response.json();
+
+        if (data.reply) {
+          aiOutput.innerText = data.reply;
+        } else {
+          aiOutput.innerText = "AI did not return a response.";
+        }
+
+      } catch (error) {
+        console.error("AI Error:", error);
+        aiOutput.innerText = "Network error. Please try again.";
+      }
+    });
+  }
+
 });
