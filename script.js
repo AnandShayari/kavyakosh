@@ -1,119 +1,125 @@
-document.addEventListener("DOMContentLoaded", () => {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  // ===============================
-  // PUBLISH & LIBRARY LOGIC
-  // ===============================
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fb;
+  color: #222;
+}
 
-  const publishForm = document.getElementById("publishForm");
-  const worksContainer = document.getElementById("worksContainer");
-  const filterLanguage = document.getElementById("filterLanguage");
-  const filterGenre = document.getElementById("filterGenre");
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
 
-  let works = JSON.parse(localStorage.getItem("kavyakoshWorks")) || [];
+header h1 {
+  font-family: 'Playfair Display', serif;
+}
 
-  function renderWorks() {
-    worksContainer.innerHTML = "";
+nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+}
 
-    const lang = filterLanguage.value;
-    const genre = filterGenre.value;
+section {
+  padding: 100px 40px;
+}
 
-    const filteredWorks = works.filter(work => {
-      return (lang === "All" || work.language === lang) &&
-             (genre === "All" || work.genre === genre);
-    });
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6));
+  color: white;
+  display: flex;
+  align-items: center;
+}
 
-    if (filteredWorks.length === 0) {
-      worksContainer.innerHTML = "<p>No works found.</p>";
-      return;
-    }
+.hero h2 {
+  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+}
 
-    filteredWorks.forEach(work => {
-      const div = document.createElement("div");
-      div.className = "work-card";
-      div.innerHTML = `
-        <h3>${work.title}</h3>
-        <p><strong>Author:</strong> ${work.author}</p>
-        <p><strong>Language:</strong> ${work.language}</p>
-        <p><strong>Genre:</strong> ${work.genre}</p>
-        <p>${work.content}</p>
-      `;
-      worksContainer.appendChild(div);
-    });
-  }
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+}
 
-  if (publishForm) {
-    publishForm.addEventListener("submit", e => {
-      e.preventDefault();
+#publishForm input,
+#publishForm select,
+#publishForm textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+}
 
-      const newWork = {
-        title: document.getElementById("title").value.trim(),
-        author: document.getElementById("author").value.trim(),
-        language: document.getElementById("language").value,
-        genre: document.getElementById("genre").value,
-        content: document.getElementById("content").value.trim()
-      };
+#publishForm button {
+  background: #111;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  cursor: pointer;
+}
 
-      works.push(newWork);
-      localStorage.setItem("kavyakoshWorks", JSON.stringify(works));
+#worksContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  gap: 20px;
+}
 
-      publishForm.reset();
-      renderWorks();
-    });
-  }
+.work-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
 
-  if (filterLanguage) filterLanguage.addEventListener("change", renderWorks);
-  if (filterGenre) filterGenre.addEventListener("change", renderWorks);
+#ai-chat {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.1);
+}
 
-  renderWorks();
+#ai-chat textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+}
 
-  // ===============================
-  // AI CHAT LOGIC (BLENDED)
-  // ===============================
+#ai-chat button {
+  background: #4b2e83;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
 
-  const aiBtn = document.getElementById("aiBtn");
-  const aiInput = document.getElementById("aiInput");
-  const aiOutput = document.getElementById("aiOutput");
+#aiOutput {
+  margin-top: 20px;
+  background: #f4f3f1;
+  padding: 15px;
+  border-radius: 8px;
+}
 
-  if (aiBtn) {
-    aiBtn.addEventListener("click", async () => {
-      const message = aiInput.value.trim();
-
-      if (!message) {
-        aiOutput.innerText = "Please write something first.";
-        return;
-      }
-
-      aiOutput.innerText = "Kavyakosh AI is thinking... ✨";
-
-      try {
-        const response = await fetch(
-          "https://kavyakosh-backend.vercel.app/api/chat",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ message }),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Server error");
-        }
-
-        const data = await response.json();
-
-        if (data.reply) {
-          aiOutput.innerText = data.reply;
-        } else {
-          aiOutput.innerText = "AI did not return a response.";
-        }
-
-      } catch (error) {
-        console.error("AI Error:", error);
-        aiOutput.innerText = "Network error. Please try again.";
-      }
-    });
-  }
-
-});
+footer {
+  background: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+}
