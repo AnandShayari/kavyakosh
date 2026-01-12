@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kavyakosh Chat</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto; }
+    input { width: 80%; padding: 8px; }
+    button { padding: 8px; }
+  </style>
+</head>
+<body>
+
+<h2>Kavyakosh Chat (Test)</h2>
+
+<div id="chat"></div><br>
+
+<input id="msg" placeholder="Type message..." />
+<button onclick="send()">Send</button>
+
+<script>
+async function send() {
+  const message = document.getElementById("msg").value;
+  if (!message) return;
+
+  document.getElementById("chat").innerHTML += "<b>You:</b> " + message + "<br>";
+  document.getElementById("msg").value = "";
+
+  const res = await fetch("https://kavyakosh-backend.vercel.app/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  });
+
+  const data = await res.json();
+  document.getElementById("chat").innerHTML += "<b>Bot:</b> " + data.reply + "<br>";
+}
+</script>
+
+</body>
+</html>
