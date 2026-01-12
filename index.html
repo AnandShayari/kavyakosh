@@ -3,119 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kavyakosh | Literature & AI Platform</title>
 
-  <title>Kavyakosh | Literature & Book Platform</title>
-
-  <!-- FIXED PATHS FOR GITHUB PAGES -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Kavyakosh</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#publish">Publish</a>
-      <a href="#library">Library</a>
-      <a href="#authors">Authors</a>
-      <a href="#books">Books</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<header>
+  <h1>Kavyakosh</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#publish">Publish</a>
+    <a href="#library">Library</a>
+    <a href="#ai-chat">AI</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div>
-      <h2>Share Your Verse with the World</h2>
-      <p>
-        Kavyakosh is a modern platform for Hindi & English literature,
-        poetry, shayari, stories, and books.
-      </p>
-      <a href="#publish" class="btn">Start Publishing</a>
-    </div>
-  </section>
+<section id="home" class="hero">
+  <div>
+    <h2>Share Your Verse with the World</h2>
+    <p>A modern platform for Hindi & English literature, poetry, and AI creativity.</p>
+    <a href="#publish" class="btn">Start Publishing</a>
+  </div>
+</section>
 
-  <!-- PUBLISH -->
-  <section id="publish">
-    <h2>Publish Your Work</h2>
+<section id="publish">
+  <h2>Publish Your Work</h2>
+  <form id="publishForm">
+    <input type="text" id="title" placeholder="Title" required>
+    <input type="text" id="author" placeholder="Author Name" required>
 
-    <form id="publishForm">
-      <input type="text" id="title" placeholder="Title" required />
-      <input type="text" id="author" placeholder="Author Name" required />
+    <select id="language">
+      <option value="Hindi">Hindi</option>
+      <option value="English">English</option>
+    </select>
 
-      <select id="language">
-        <option value="Hindi">Hindi</option>
-        <option value="English">English</option>
-      </select>
+    <select id="genre">
+      <option value="Poetry">Poetry</option>
+      <option value="Shayari">Shayari</option>
+      <option value="Story">Story</option>
+      <option value="Book">Book</option>
+    </select>
 
-      <select id="genre">
-        <option value="Poetry">Poetry</option>
-        <option value="Shayari">Shayari</option>
-        <option value="Story">Story</option>
-        <option value="Book">Book</option>
-      </select>
+    <textarea id="content" rows="5" placeholder="Write your content..." required></textarea>
+    <button type="submit">Publish</button>
+  </form>
+</section>
 
-      <textarea id="content" rows="5" placeholder="Write your content..." required></textarea>
-      <button type="submit">Publish</button>
-    </form>
-  </section>
+<section id="library">
+  <h2>Published Works</h2>
 
-  <!-- LIBRARY -->
-  <section id="library">
-    <h2>Published Works</h2>
+  <div id="filter">
+    <select id="filterLanguage">
+      <option value="All">All Languages</option>
+      <option value="Hindi">Hindi</option>
+      <option value="English">English</option>
+    </select>
 
-    <div id="filter">
-      <label>Language:</label>
-      <select id="filterLanguage">
-        <option value="All">All</option>
-        <option value="Hindi">Hindi</option>
-        <option value="English">English</option>
-      </select>
+    <select id="filterGenre">
+      <option value="All">All Genres</option>
+      <option value="Poetry">Poetry</option>
+      <option value="Shayari">Shayari</option>
+      <option value="Story">Story</option>
+      <option value="Book">Book</option>
+    </select>
+  </div>
 
-      <label>Genre:</label>
-      <select id="filterGenre">
-        <option value="All">All</option>
-        <option value="Poetry">Poetry</option>
-        <option value="Shayari">Shayari</option>
-        <option value="Story">Story</option>
-        <option value="Book">Book</option>
-      </select>
-    </div>
+  <div id="worksContainer"></div>
+</section>
 
-    <div id="worksContainer"></div>
-  </section>
+<!-- AI CHAT -->
+<section id="ai-chat">
+  <h2>Kavyakosh AI ✨</h2>
+  <p>Ask AI to write poems, shayari, stories, or ideas.</p>
 
-  <!-- AUTHORS -->
-  <section id="authors">
-    <h2>Authors</h2>
-    <div id="authorsContainer"></div>
-  </section>
+  <textarea id="aiInput" rows="4" placeholder="Write a Hindi poem on hope..."></textarea>
+  <button onclick="askAI()">Generate</button>
 
-  <!-- BOOKS -->
-  <section id="books">
-    <h2>Books for Sale</h2>
-    <div id="booksContainer"></div>
-  </section>
+  <div id="aiOutput"></div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:info@kavyakosh.online">info@kavyakosh.online</a></p>
-  </section>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:info@kavyakosh.online">info@kavyakosh.online</a></p>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Kavyakosh | All Rights Reserved</p>
-  </footer>
+<footer>
+  <p>© 2026 Kavyakosh</p>
+</footer>
 
-  <!-- FIXED PATH -->
- <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
-
