@@ -3,93 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kavyakosh | Literature & AI Platform</title>
+  <title>Kavyakosh</title>
 
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
-  <h1>Kavyakosh</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#publish">Publish</a>
-    <a href="#library">Library</a>
-    <a href="#ai-chat">AI</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <h1>Kavyakosh AI</h1>
 
-<section id="home" class="hero">
-  <div>
-    <h2>Share Your Verse with the World</h2>
-    <p>Hindi & English literature powered by AI.</p>
-    <a href="#publish" class="btn">Start Publishing</a>
-  </div>
-</section>
+  <section id="ai-chat">
+    <h2>Ask AI Poet</h2>
 
-<section id="publish">
-  <h2>Publish Your Work</h2>
-  <form id="publishForm">
-    <input id="title" placeholder="Title" required />
-    <input id="author" placeholder="Author" required />
+    <textarea
+      id="aiInput"
+      rows="4"
+      placeholder="Write a Hindi poem about hope..."
+    ></textarea>
 
-    <select id="language">
-      <option>Hindi</option>
-      <option>English</option>
-    </select>
+    <br /><br />
 
-    <select id="genre">
-      <option>Poetry</option>
-      <option>Shayari</option>
-      <option>Story</option>
-      <option>Book</option>
-    </select>
+    <button type="button" id="aiBtn">
+      Generate
+    </button>
 
-    <textarea id="content" rows="5" placeholder="Write here..." required></textarea>
-    <button type="submit">Publish</button>
-  </form>
-</section>
+    <pre id="aiOutput"></pre>
+  </section>
 
-<section id="library">
-  <h2>Published Works</h2>
+  <script src="script.js"></script>
 
-  <select id="filterLanguage">
-    <option value="All">All Languages</option>
-    <option>Hindi</option>
-    <option>English</option>
-  </select>
-
-  <select id="filterGenre">
-    <option value="All">All Genres</option>
-    <option>Poetry</option>
-    <option>Shayari</option>
-    <option>Story</option>
-    <option>Book</option>
-  </select>
-
-  <div id="worksContainer"></div>
-</section>
-
-<section id="ai-chat">
-  <h2>Kavyakosh AI ✨</h2>
-  <p>Ask AI to write poems, shayari, stories.</p>
-
-  <textarea id="aiInput" rows="4" placeholder="Write a Hindi poem on hope..."></textarea>
-  <button onclick="askAI()">Generate</button>
-
-  <div id="aiOutput"></div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:info@kavyakosh.online">info@kavyakosh.online</a></p>
-</section>
-
-<footer>© 2026 Kavyakosh</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
