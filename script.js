@@ -1,125 +1,83 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f8f9fb;
-  color: #222;
-}
+  const publishForm = document.getElementById("publishForm");
+  const worksContainer = document.getElementById("worksContainer");
+  const filterLanguage = document.getElementById("filterLanguage");
+  const filterGenre = document.getElementById("filterGenre");
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #111;
-  color: #fff;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-}
+  let works = JSON.parse(localStorage.getItem("kavyakoshWorks")) || [];
 
-header h1 {
-  font-family: 'Playfair Display', serif;
-}
+  function renderWorks() {
+    worksContainer.innerHTML = "";
 
-nav a {
-  color: #fff;
-  margin-left: 20px;
-  text-decoration: none;
-}
+    const lang = filterLanguage.value;
+    const genre = filterGenre.value;
 
-section {
-  padding: 100px 40px;
-}
+    const filtered = works.filter(w =>
+      (lang === "All" || w.language === lang) &&
+      (genre === "All" || w.genre === genre)
+    );
 
-.hero {
-  min-height: 100vh;
-  background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6));
-  color: white;
-  display: flex;
-  align-items: center;
-}
+    if (filtered.length === 0) {
+      worksContainer.innerHTML = "<p>No works found.</p>";
+      return;
+    }
 
-.hero h2 {
-  font-size: 48px;
-  font-family: 'Playfair Display', serif;
-}
+    filtered.forEach(w => {
+      const div = document.createElement("div");
+      div.className = "work-card";
+      div.innerHTML = `
+        <h3>${w.title}</h3>
+        <p><strong>${w.author}</strong></p>
+        <p>${w.content}</p>
+      `;
+      worksContainer.appendChild(div);
+    });
+  }
 
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 30px;
-  background: #fff;
-  color: #000;
-  text-decoration: none;
-  border-radius: 6px;
-}
+  publishForm.addEventListener("submit", e => {
+    e.preventDefault();
 
-#publishForm input,
-#publishForm select,
-#publishForm textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-}
+    works.push({
+      title: title.value,
+      author: author.value,
+      language: language.value,
+      genre: genre.value,
+      content: content.value
+    });
 
-#publishForm button {
-  background: #111;
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  cursor: pointer;
-}
+    localStorage.setItem("kavyakoshWorks", JSON.stringify(works));
+    publishForm.reset();
+    renderWorks();
+  });
 
-#worksContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-  gap: 20px;
-}
+  filterLanguage.addEventListener("change", renderWorks);
+  filterGenre.addEventListener("change", renderWorks);
 
-.work-card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-}
+  renderWorks();
+});
 
-#ai-chat {
-  background: white;
-  border-radius: 15px;
-  padding: 40px;
-  box-shadow: 0 8px 25px rgba(0,0,0,.1);
-}
+async function askAI() {
+  const input = document.getElementById("aiInput").value;
+  const output = document.getElementById("aiOutput");
 
-#ai-chat textarea {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
-}
+  if (!input.trim()) {
+    output.innerText = "Please write something.";
+    return;
+  }
 
-#ai-chat button {
-  background: #4b2e83;
-  color: white;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-}
+  output.innerText = "Thinking...";
 
-#aiOutput {
-  margin-top: 20px;
-  background: #f4f3f1;
-  padding: 15px;
-  border-radius: 8px;
-}
+  try {
+    const res = await fetch("https://kavyakosh-backend.vercel.app/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: input })
+    });
 
-footer {
-  background: #111;
-  color: #ccc;
-  text-align: center;
-  padding: 20px;
+    const data = await res.json();
+    output.innerText = data.reply || "No response";
+  } catch {
+    output.innerText = "Network error.";
+  }
 }
