@@ -1,58 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Kavyakosh</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Kavyakosh – Literature Beyond Words</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">
-    <img src="assets/kavyakosh.png" alt="Kavyakosh Logo">
-    <span>Kavyakosh</span>
-  </div>
-
+<header>
+  <img src="./assets/Kavyakosh.png" class="logo">
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Publish</a>
-    <a href="#">Library</a>
-    <a href="#">Authors</a>
-    <a href="#">Books</a>
-    <a href="#">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="publish.html">Publish</a>
+    <a href="library.html">Library</a>
+    <a href="authors.html">Authors</a>
+    <a href="books.html">Books</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
-
-  <!-- Desktop video -->
-  <video class="bg-video desktop" autoplay muted loop playsinline>
-    <source src="assets/ink.mp4" type="video/mp4">
-  </video>
-
-  <!-- Mobile video -->
-  <video class="bg-video mobile" autoplay muted loop playsinline>
-    <source src="assets/pen.mp4" type="video/mp4">
-  </video>
-
-  <div class="overlay"></div>
-
-  <div class="hero-content">
-    <h1>EXPERIENCES<br>THAT GO BEYOND<br>WORDS</h1>
-
-    <p>
-      Kavyakosh is a modern platform for Hindi & English literature,
-      poetry, shayari, stories, and books.
-    </p>
-
-    <a class="cta" href="#">Start Publishing</a>
-  </div>
-
+  <h1>EXPERIENCES<br>THAT GO BEYOND<br>WORDS</h1>
+  <p>Kavyakosh is a modern platform for Hindi & English literature, poetry, shayari, stories, and books.</p>
 </section>
 
-<script src="script.js"></script>
+<section class="login-box">
+  <h2>Login to Kavyakosh</h2>
+  <input type="text" placeholder="Username or Email">
+  <input type="password" placeholder="Password">
+  <button>Login</button>
+  <p class="small">New here? <a href="#">Create an account</a></p>
+</section>
+
+<footer>
+  © 2026 Kavyakosh · Preserving Literature
+</footer>
+
 </body>
 </html>
