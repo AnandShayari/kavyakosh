@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Kavyakosh – Literature Beyond Words</title>
-  <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<title>Kavyakosh</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <img src="./assets/Kavyakosh.png" class="logo">
+  <img src="assets/Kavyakosh.png" class="logo">
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="publish.html">Publish</a>
     <a href="library.html">Library</a>
     <a href="authors.html">Authors</a>
@@ -20,20 +20,31 @@
 </header>
 
 <section class="hero">
-  <h1>EXPERIENCES<br>THAT GO BEYOND<br>WORDS</h1>
-  <p>Kavyakosh is a modern platform for Hindi & English literature, poetry, shayari, stories, and books.</p>
-</section>
+  <video autoplay muted loop class="bg-video">
+    <source src="assets/Pen.mp4" type="video/mp4">
+  </video>
 
-<section class="login-box">
-  <h2>Login to Kavyakosh</h2>
-  <input type="text" placeholder="Username or Email">
-  <input type="password" placeholder="Password">
-  <button>Login</button>
-  <p class="small">New here? <a href="#">Create an account</a></p>
+  <div class="hero-content">
+    <h1>EXPERIENCES<br>THAT GO BEYOND<br>WORDS</h1>
+    <p>
+      Kavyakosh is a modern platform for Hindi & English literature,
+      poetry, shayari, stories, and books.
+    </p>
+    <a href="publish.html" class="btn">Start Publishing</a>
+  </div>
+
+  <div class="login-box">
+    <h3>Login</h3>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+    <p class="small">New here? <a href="#">Create account</a></p>
+  </div>
 </section>
 
 <footer>
-  © 2026 Kavyakosh · Preserving Literature
+  © 2026 Kavyakosh · 
+  <a href="mailto:info@kavyakosh.online">info@kavyakosh.online</a>
 </footer>
 
 </body>
