@@ -1,166 +1,58 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kavyakosh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-body {
-  color: #fff;
-  overflow-x: hidden;
-}
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-/* BACKGROUND VIDEO */
-.bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-}
+<header class="header">
+  <div class="logo">
+    <img src="assets/kavyakosh.png" alt="Kavyakosh Logo">
+    <span>Kavyakosh</span>
+  </div>
 
-/* OVERLAY */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
-}
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Publish</a>
+    <a href="#">Library</a>
+    <a href="#">Authors</a>
+    <a href="#">Books</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
 
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-}
+<section class="hero">
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+  <!-- Desktop video -->
+  <video class="bg-video desktop" autoplay muted loop playsinline>
+    <source src="assets/ink.mp4" type="video/mp4">
+  </video>
 
-.logo img {
-  width: 42px;
-}
+  <!-- Mobile video -->
+  <video class="bg-video mobile" autoplay muted loop playsinline>
+    <source src="assets/pen.mp4" type="video/mp4">
+  </video>
 
-.logo span {
-  font-size: 24px;
-  font-weight: 600;
-}
+  <div class="overlay"></div>
 
-nav a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #ddd;
-  font-size: 16px;
-}
+  <div class="hero-content">
+    <h1>EXPERIENCES<br>THAT GO BEYOND<br>WORDS</h1>
 
-nav a:hover {
-  color: #fff;
-}
+    <p>
+      Kavyakosh is a modern platform for Hindi & English literature,
+      poetry, shayari, stories, and books.
+    </p>
 
-/* HERO */
-.hero {
-  min-height: calc(100vh - 80px);
-  display: flex;
-  align-items: center;
-  padding: 0 60px;
-}
+    <a class="cta" href="#">Start Publishing</a>
+  </div>
 
-.hero-card {
-  max-width: 600px;
-  backdrop-filter: blur(14px);
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
-  padding: 40px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-}
+</section>
 
-.hero h1 {
-  font-size: 48px;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 18px;
-  color: #ddd;
-  margin-bottom: 30px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 35px;
-}
-
-button {
-  padding: 12px 26px;
-  border-radius: 30px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.primary {
-  background: #fff;
-  color: #000;
-}
-
-.secondary {
-  background: transparent;
-  color: #fff;
-  border: 1px solid #aaa;
-}
-
-.primary:hover,
-.secondary:hover {
-  transform: scale(1.05);
-}
-
-/* STATS */
-.stats {
-  display: flex;
-  gap: 30px;
-}
-
-.stats div {
-  text-align: center;
-}
-
-.stats strong {
-  font-size: 22px;
-  display: block;
-}
-
-.stats span {
-  font-size: 14px;
-  color: #ccc;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 15px 20px;
-  }
-
-  nav {
-    display: none;
-  }
-
-  .hero {
-    padding: 20px;
-  }
-
-  .hero-card {
-    padding: 30px;
-  }
-
-  .hero h1 {
-    font-size: 34px;
-  }
-}
+<script src="script.js"></script>
+</body>
+</html>
