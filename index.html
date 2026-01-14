@@ -2,56 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Kavyakosh – Where Words Come Alive</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kavyakosh</title>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
+<!-- HERO -->
+<section class="hero">
 
-    <!-- VIDEO (mobile priority, desktop fallback works too) -->
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="hero.mp4" type="video/mp4">
-    </video>
+  <!-- Desktop Video -->
+  <video class="hero-video desktop" autoplay muted loop playsinline>
+    <source src="assets/Ink.mp4" type="video/mp4">
+  </video>
 
-    <!-- DARK OVERLAY -->
-    <div class="overlay"></div>
+  <!-- Mobile Video -->
+  <video class="hero-video mobile" autoplay muted loop playsinline>
+    <source src="assets/Pen.mp4" type="video/mp4">
+  </video>
 
-    <!-- CONTENT -->
-    <div class="hero-content">
-      <h1>WORDS BEYOND PAGES</h1>
-      <p>
-        Poetry, Shayari, Stories & Books  
-        <br>Where ink meets imagination
-      </p>
-      <button class="primary-btn">Start Writing</button>
-    </div>
+  <!-- Overlay -->
+  <div class="overlay"></div>
 
-    <!-- GLASS CARD (DESKTOP UI STYLE) -->
-    <div class="glass-card">
-      <h3>Experience Literature</h3>
-      <p>
-        Publish poetry, stories and books  
-        crafted by passionate writers.
-      </p>
-      <button class="secondary-btn">Explore Works</button>
-    </div>
+  <!-- Content -->
+  <div class="hero-content">
+    <h1>Kavyakosh</h1>
+    <p>
+      Where ink flows into poetry,  
+      and pens write timeless words.
+    </p>
+    <a href="#explore" class="btn">Explore Literature</a>
+  </div>
 
-  </section>
+</section>
 
-  <!-- STATS -->
-  <section class="stats">
-    <div><strong>10K+</strong><span>Poems</span></div>
-    <div><strong>2K+</strong><span>Authors</span></div>
-    <div><strong>500+</strong><span>Books</span></div>
-  </section>
+<!-- CONTENT -->
+<section id="explore" class="content">
+  <h2>Words Begin Here</h2>
+  <p>
+    A calm space for poetry, shayari, stories and books.  
+    Crafted slowly. Written deeply.
+  </p>
+</section>
 
-  <!-- SCRIPT -->
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
