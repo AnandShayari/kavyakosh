@@ -1,6 +1,2 @@
-// Keep videos playing smoothly on mobile
-document.querySelectorAll("video").forEach(video => {
-  video.addEventListener("canplay", () => {
-    video.play().catch(() => {});
-  });
-});
+// Reserved for future animations or interactions
+console.log("Kavyakosh front page loaded");
