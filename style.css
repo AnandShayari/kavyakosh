@@ -1,93 +1,97 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Georgia", serif;
-}
-
 body {
-  background: #0f0f14;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0f;
   color: #e6e6eb;
 }
 
-/* HEADER */
 header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
+  padding: 20px;
 }
 
 .logo {
-  height: 50px;
+  height: 40px;
 }
 
 nav a {
-  margin-left: 20px;
   color: #e6e6eb;
+  margin-left: 15px;
   text-decoration: none;
-  font-weight: 500;
 }
 
+nav a.active,
 nav a:hover {
   color: #d4af37;
 }
 
-/* HERO */
 .hero {
-  padding: 100px 60px;
-  max-width: 800px;
+  position: relative;
+  height: 90vh;
 }
 
-.hero h1 {
-  font-size: 64px;
-  line-height: 1.1;
-}
-
-.hero p {
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-/* LOGIN */
-.login-box {
-  background: #1a1a22;
-  width: 350px;
-  margin: 60px;
-  padding: 30px;
-  border-radius: 12px;
-}
-
-.login-box h2 {
-  margin-bottom: 20px;
-  color: #d4af37;
-}
-
-.login-box input {
+.bg-video {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: none;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
 }
 
+.hero-content {
+  position: relative;
+  padding: 80px;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+}
+
+.btn {
+  background: #d4af37;
+  color: #000;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.login-box {
+  position: absolute;
+  right: 60px;
+  top: 150px;
+  background: rgba(0,0,0,0.7);
+  padding: 20px;
+  border-radius: 15px;
+  width: 260px;
+}
+
+.login-box input,
 .login-box button {
   width: 100%;
-  padding: 12px;
-  background: #d4af37;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.login-box .small {
   margin-top: 10px;
-  font-size: 14px;
+  padding: 10px;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
+.page {
+  padding: 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
   padding: 30px;
-  color: #aaa;
+  border-radius: 15px;
+  text-align: center;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
 }
