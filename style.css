@@ -16,14 +16,14 @@ body {
 /* HERO */
 .hero {
   position: relative;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* VIDEO */
 .hero-video {
   position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -37,101 +37,64 @@ body {
     rgba(0,0,0,0.65),
     rgba(0,0,0,0.85)
   );
+  z-index: 1;
 }
 
 /* CONTENT */
 .hero-content {
-  position: absolute;
-  left: 8%;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
   z-index: 2;
-  max-width: 520px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8%;
+  max-width: 700px;
 }
 
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: 64px;
-  line-height: 1.1;
   margin-bottom: 20px;
   animation: fadeUp 1.2s ease forwards;
 }
 
 .hero-content p {
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 1.6;
   opacity: 0.9;
-  margin-bottom: 30px;
-  animation: fadeUp 1.6s ease forwards;
+  animation: fadeUp 1.5s ease forwards;
 }
 
-/* BUTTONS */
-.primary-btn,
-.secondary-btn {
-  padding: 14px 30px;
+.btn {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 14px 36px;
   border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.primary-btn {
   background: #fff;
   color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  width: fit-content;
+  animation: fadeUp 1.8s ease forwards;
 }
 
-.secondary-btn {
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.5);
+/* CONTENT SECTION */
+.content {
+  padding: 120px 10%;
+  background: #0a0a0a;
 }
 
-/* GLASS CARD */
-.glass-card {
-  position: absolute;
-  right: 6%;
-  bottom: 12%;
-  width: 320px;
-  padding: 25px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(18px);
-  border-radius: 18px;
-  z-index: 2;
-  animation: fadeUp 2s ease forwards;
-}
-
-.glass-card h3 {
+.content h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 42px;
+  margin-bottom: 20px;
 }
 
-.glass-card p {
-  font-size: 14px;
+.content p {
+  font-size: 18px;
   opacity: 0.85;
-  margin-bottom: 15px;
-}
-
-/* STATS */
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  padding: 40px 0;
-  background: #111;
-}
-
-.stats div {
-  text-align: center;
-}
-
-.stats strong {
-  font-size: 26px;
-  display: block;
-}
-
-.stats span {
-  font-size: 14px;
-  opacity: 0.7;
+  max-width: 600px;
 }
 
 /* ANIMATION */
@@ -146,25 +109,28 @@ body {
   }
 }
 
-/* MOBILE */
+/* RESPONSIVE VIDEO SWITCH */
+.desktop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .hero-content {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 0 20px;
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
   }
 
   .hero-content h1 {
-    font-size: 38px;
+    font-size: 42px;
   }
 
-  .glass-card {
-    display: none;
-  }
-
-  .stats {
-    flex-direction: column;
-    gap: 25px;
+  .hero-content p {
+    font-size: 16px;
   }
 }
