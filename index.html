@@ -2,53 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kavyakosh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="style.css"/>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-
-  <!-- Desktop Video -->
-  <video class="hero-video desktop" autoplay muted loop playsinline>
-    <source src="assets/Ink.mp4" type="video/mp4">
+  <!-- BACKGROUND VIDEO -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="assets/ink.mp4" type="video/mp4" />
   </video>
 
-  <!-- Mobile Video -->
-  <video class="hero-video mobile" autoplay muted loop playsinline>
-    <source src="assets/Pen.mp4" type="video/mp4">
-  </video>
-
-  <!-- Overlay -->
+  <!-- DARK OVERLAY -->
   <div class="overlay"></div>
 
-  <!-- Content -->
-  <div class="hero-content">
-    <h1>Kavyakosh</h1>
-    <p>
-      Where ink flows into poetry,  
-      and pens write timeless words.
-    </p>
-    <a href="#explore" class="btn">Explore Literature</a>
-  </div>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Kavyakosh Logo" />
+      <span>Kavyakosh</span>
+    </div>
 
-</section>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Publish</a>
+      <a href="#">Library</a>
+      <a href="#">Authors</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-<!-- CONTENT -->
-<section id="explore" class="content">
-  <h2>Words Begin Here</h2>
-  <p>
-    A calm space for poetry, shayari, stories and books.  
-    Crafted slowly. Written deeply.
-  </p>
-</section>
+  <!-- HERO -->
+  <main class="hero">
+    <div class="hero-card">
 
-<script src="script.js"></script>
+      <h1>
+        EXPERIENCES <br />
+        THAT GO BEYOND <br />
+        WORDS
+      </h1>
+
+      <p>
+        A modern platform for poetry, shayari, stories and books.
+        Where ink meets imagination.
+      </p>
+
+      <div class="hero-actions">
+        <button class="primary">Start Publishing</button>
+        <button class="secondary">Explore Library</button>
+      </div>
+
+      <div class="stats">
+        <div>
+          <strong>6,800+</strong>
+          <span>Poems</span>
+        </div>
+        <div>
+          <strong>2,000+</strong>
+          <span>Authors</span>
+        </div>
+        <div>
+          <strong>2,000+</strong>
+          <span>Stories</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
