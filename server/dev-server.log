@@ -1,0 +1,68 @@
+
+> kavyakosh-server@0.1.0 dev
+> nodemon server.js
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+Server running on port 5000
+MongoDB connected: ac-yiqgncj-shard-00-01.hvgdmab.mongodb.net
+[0mPOST /api/ai/generate/shayari [32m200[0m 3.450 ms - 396[0m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Server running on port 5000
+MongoDB connected: ac-yiqgncj-shard-00-02.hvgdmab.mongodb.net
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Server running on port 5000
+MongoDB connected: ac-yiqgncj-shard-00-00.hvgdmab.mongodb.net
+[0mPOST /api/auth/login [32m200[0m 141.861 ms - 573[0m
+[0mPOST /api/auth/register [32m201[0m 186.663 ms - 579[0m
+[0mPOST /api/auth/login [32m200[0m 119.207 ms - 583[0m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Server running on port 5000
+MongoDB connected: ac-yiqgncj-shard-00-02.hvgdmab.mongodb.net
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Server running on port 5000
+MongoDB connected: ac-yiqgncj-shard-00-01.hvgdmab.mongodb.net
+[0mPOST /api/auth/login [32m200[0m 448.291 ms - 569[0m
+[0mGET /api/auth/current-user [32m200[0m 124.636 ms - 989[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 67.249 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 63.844 ms - -[0m
+[0mGET /api/competitions [36m304[0m 34.988 ms - -[0m
+[0mGET /api/competitions [36m304[0m 29.542 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 64.614 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 59.472 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 76.535 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 59.103 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 56.009 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 60.623 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 62.414 ms - -[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 57.471 ms - -[0m
+[0mGET /api/poems/6a2428ea7c78dda56810301c [32m200[0m 151.494 ms - 1083[0m
+[0mGET /api/poems/6a2428ea7c78dda56810301c [32m200[0m 104.365 ms - 1083[0m
+[0mPOST /api/poems/6a2428ea7c78dda56810301c/like [33m400[0m 111.391 ms - 43[0m
+[0mPOST /api/poems/6a2428ea7c78dda56810301c/like [33m400[0m 98.181 ms - 43[0m
+[0mGET /api/poems/trending?limit=3 [32m200[0m 64.698 ms - 1061[0m
+[0mGET /api/poems/trending?limit=3 [36m304[0m 63.318 ms - -[0m
+[0mPOST /api/ai/generate/shayari [32m200[0m 146.264 ms - 394[0m
+[0mPOST /api/ai/generate/shayari [32m200[0m 96.959 ms - 427[0m
+[0mPOST /api/ai/generate/ghazal [32m200[0m 108.674 ms - 361[0m
